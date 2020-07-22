@@ -10,13 +10,26 @@ class AccountViewController: UIViewController {
     @IBOutlet var passwordLabel: UITextField!
     
     @IBOutlet var nameLabel: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-
+    
+        let gestureRecog = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        
+        view.addGestureRecognizer(gestureRecog)
+        
     }
     
+    
+    @objc func dismissKeyboard() {
+        
+        view.endEditing(true)
+        
+        
+    }
 
     @IBAction func accountCreated(_ sender: Any) {
         

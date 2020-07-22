@@ -26,6 +26,8 @@
 		5F99F0F92479744000CB4F90 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F99F0F82479744000CB4F90 /* NotesViewController.swift */; };
 		5FE3ECF624A3585E00C95475 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE3ECF524A3585E00C95475 /* WeatherViewController.swift */; };
 		5FE41B952466BA3000F97FBA /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE41B942466BA3000F97FBA /* TripViewController.swift */; };
+		5FEBFE4624C6E1E800FB637B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEBFE4524C6E1E800FB637B /* CustomTableViewCell.swift */; };
+		5FF191A624BF619D00E9F4B2 /* CurrentTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF191A524BF619D00E9F4B2 /* CurrentTripViewController.swift */; };
 		5FF44ECC24816FDA0052804B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF44ECB24816FDA0052804B /* ViewController.swift */; };
 		DB79AA0D56CFA47C9F3F1219 /* Pods_DataTrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7972F2DC810A1FFA6F7F6A83 /* Pods_DataTrip.framework */; };
 /* End PBXBuildFile section */
@@ -52,6 +54,8 @@
 		5F99F0F82479744000CB4F90 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		5FE3ECF524A3585E00C95475 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		5FE41B942466BA3000F97FBA /* TripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
+		5FEBFE4524C6E1E800FB637B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		5FF191A524BF619D00E9F4B2 /* CurrentTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTripViewController.swift; sourceTree = "<group>"; };
 		5FF44ECB24816FDA0052804B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7972F2DC810A1FFA6F7F6A83 /* Pods_DataTrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataTrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6D8AFD45BFD6FFC0F66DCB /* Pods-DataTrip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataTrip.debug.xcconfig"; path = "Target Support Files/Pods-DataTrip/Pods-DataTrip.debug.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F30AF4324C1E98700406564 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5FEBFE4524C6E1E800FB637B /* CustomTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		5F63E31F2492150700601886 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,14 +100,15 @@
 				5F9531F62464975000E9D76D /* AccountViewController.swift */,
 				5FE41B942466BA3000F97FBA /* TripViewController.swift */,
 				5F5FCB34246FF36800F71E5D /* TableViewController.swift */,
+				5F6040BD2488F2B400E0F92B /* BeforeTripViewController.swift */,
 				5F99F0F624781DB000CB4F90 /* MoreViewController.swift */,
 				5F99F0F82479744000CB4F90 /* NotesViewController.swift */,
 				5F1347D02487F942000F1407 /* RouterViewController.swift */,
-				5F6040BD2488F2B400E0F92B /* BeforeTripViewController.swift */,
 				5F67A6172497E66600C89081 /* DayTripViewController.swift */,
 				5F6040BF24891C5B00E0F92B /* ShowTripsViewController.swift */,
 				5FE3ECF524A3585E00C95475 /* WeatherViewController.swift */,
 				5F64416524ABA5C100F5049F /* LogOutViewController.swift */,
+				5FF191A524BF619D00E9F4B2 /* CurrentTripViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -122,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				5F63E3202492151D00601886 /* Controllers */,
+				5F30AF4324C1E98700406564 /* View */,
 				5F63E31F2492150700601886 /* Models */,
 				5F9531EB246496F800E9D76D /* Assets.xcassets */,
 				5F9531E8246496F400E9D76D /* Main.storyboard */,
@@ -265,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FEBFE4624C6E1E800FB637B /* CustomTableViewCell.swift in Sources */,
 				5F99F0F724781DB000CB4F90 /* MoreViewController.swift in Sources */,
 				5FE3ECF624A3585E00C95475 /* WeatherViewController.swift in Sources */,
 				5F911E662465CCEE001D6D4A /* HomeViewController.swift in Sources */,
@@ -277,6 +292,7 @@
 				5FE41B952466BA3000F97FBA /* TripViewController.swift in Sources */,
 				5F9531E5246496F400E9D76D /* SceneDelegate.swift in Sources */,
 				5F64416424AB6FAA00F5049F /* tripModel.swift in Sources */,
+				5FF191A624BF619D00E9F4B2 /* CurrentTripViewController.swift in Sources */,
 				5F9531F72464975000E9D76D /* AccountViewController.swift in Sources */,
 				5F1347D12487F942000F1407 /* RouterViewController.swift in Sources */,
 				5F64416624ABA5C100F5049F /* LogOutViewController.swift in Sources */,
