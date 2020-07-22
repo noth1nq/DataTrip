@@ -59,20 +59,13 @@ class AccountViewController: UIViewController {
         
         
         let alert = UIAlertController(title: insertAlert, message: messageAlert, preferredStyle: UIAlertController.Style.alert)
-            
         let button = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-        
-        
         alert.addAction(button)
         
         self.present(alert, animated: true, completion: nil)
         
         
-        
-        
     }
-    
-        
     
     
 }

@@ -1,6 +1,8 @@
 
 import UIKit
 import Firebase
+import Foundation
+
 class BeforeTripViewController: UIViewController {
 
     @IBOutlet var tripinfoLabel: UILabel!
@@ -11,12 +13,13 @@ class BeforeTripViewController: UIViewController {
     
     var locations : String?
     var timer = Timer()
+    let db = Firestore.firestore()
     
     
     
     var day = 2
     var hours = 24
-    var minute = 60
+    var minute = 60 
     var second = 60
         
     
@@ -35,27 +38,15 @@ class BeforeTripViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
         
         
-        
+        showDateAndLocation()
         startTimer()
-        
-       
+    
        
 
             
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(notificationReceived(_:)), name: .myNotificationKey, object: nil )
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        NotificationCenter.default.removeObserver(self, name: .myNotificationKey, object: nil)
-    }
+ 
     
     func startTimer() {
         
@@ -75,51 +66,79 @@ class BeforeTripViewController: UIViewController {
               let calendar = Calendar.current
               
               var currentDay = calendar.component(.day, from: Date())
-              
-      
-        
-        timeLeftLabel.text = String("\(day) : \(hours) : \(minute) : \(second)")
-        
-        if second == 0 {
+           
+        db.collection("Trip").getDocuments { (snapshot, error) in
             
-            second = 60
-            
-            minute -= 1
-            
-            if minute == 0 {
+            if error != nil {
                 
-                second = 60
+                print(error?.localizedDescription)
                 
-                hours -= 1
                 
-                minute = 60
+            } else {
                 
-                if hours == 0 {
+                if snapshot?.isEmpty == false  && snapshot != nil {
                     
-                    second = 60
+                    for document in snapshot!.documents {
+                        
+                        if let day = document.get("day") as? [Int] {
+                            
+                            if currentDay - day.first! <= 3 {
+                                
+                                self.timeLeftLabel.text = String("\(self.day) : \(self.hours) : \(self.minute) : \(self.second)")
+                                     
+                                if self.second == 0 {
+                                         
+                                        self.second = 60
+                                         
+                                        self.minute -= 1
+                                         
+                                    if self.minute == 0 {
+                                             
+                                            self.second = 60
+                                             
+                                        self.hours -= 1
+                                             
+                                        self.minute = 60
+                                             
+                                        if self.hours == 0 {
+                                                 
+                                            self.second = 60
+                                                 
+                                            self.day -= 1
+                                                 
+                                            self.minute = 60
+                                                 
+                                            self.hours = 24
+                                                 
+                                                 
+                                             
+                                             
+                                         }
+                                     }
+                                    if self.second == 0 && self.minute == 0 && self.hours == 0 && self.day == 0 {
+                                         
+                                        self.timer.invalidate()
+                                         
+                                     }
+                                    
+                                 }
+                                
+                                
+                                
+                            }
+                                                        
+                        }
+ 
+                    }
                     
-                    day -= 1
-                    
-                    minute = 60
-                    
-                    hours = 24
-                    
-                    
-                
+                }
                 
             }
         }
-        if second == 0 && minute == 0 && hours == 0 && day == 0 {
-            
-            timer.invalidate()
-            
-        }
-       
-    }
+        
+     
     }
    
-    
-        
     @objc func triplabelGesture() {
             
         
@@ -139,16 +158,46 @@ class BeforeTripViewController: UIViewController {
         
     }
     
-    @objc func notificationReceived (_ notification : Notification) {
-        
-        
-        guard let location = notification.userInfo?["city"] as? String else {
-            
-            return
-        }
-        
-        cityAndDateLabel.text = "city: \(location)"
-        
-    }
+   
     
+    func showDateAndLocation() {
+        
+    
+        db.collection("Trip").getDocuments { (snapshot, error) in
+            
+            if error != nil {
+                
+                print(error?.localizedDescription)
+                
+                
+            } else {
+                
+                if snapshot?.isEmpty == false && snapshot != nil {
+                    
+                    for document in snapshot!.documents {
+                        
+                        if let date = document.get("dateOfTrip") as? [String] {
+                            
+                            if let city = document.get("location") as? String {
+                                
+                                
+                                self.cityAndDateLabel.text = city + " " + date.first! + " - " + date[1]
+                                
+                                
+                            }
+                            
+                            
+                            
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+            }
+        }
+    
+    
+}
 }

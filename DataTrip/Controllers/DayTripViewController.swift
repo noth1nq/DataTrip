@@ -41,6 +41,7 @@ class DayTripViewController: UIViewController {
         
         performSegue(withIdentifier: "toWeatherVC", sender: nil)
         
+    
         
         
     }

@@ -22,12 +22,6 @@ class HomeViewController: UIViewController {
         performSegue(withIdentifier: "toAddTrip", sender: nil)
         
         
-        
     }
     
-    
-    
-    
-    
-
 }

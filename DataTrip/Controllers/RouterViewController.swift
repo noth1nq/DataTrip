@@ -49,9 +49,7 @@ class RouterViewController: UINavigationController {
                                       
                                         if let day = document.get("day") as? [Int] {
                                             
-                                            let userinfo = ["city" : city]
-                                            NotificationCenter.default.post(name: .myNotificationKey, object: nil, userInfo: userinfo)
-                                           
+                                         
                                          let currentindex = self.tripModelArray.last?.id
                                          
                                         var infoModel = tripModel(name: name, date: dateTrip, location: city, id: (currentindex ?? -1) + 1, day: day)
@@ -74,14 +72,10 @@ class RouterViewController: UINavigationController {
                                                 
                                                  self.viewControllers = [controller]
                                                   
-                                            
                                               }
                                          
                                      }
                                         
-                                        
-                                     
-                                     
                                  }
                                  
                              }
@@ -89,18 +83,14 @@ class RouterViewController: UINavigationController {
                              
                          }
                             
-                            
-                         
                      }
                      
                  }
                  
                  }
                 
-                
         }
          
-        
         }
             
         
@@ -141,8 +131,6 @@ class RouterViewController: UINavigationController {
                             self.viewControllers = [controller]
                                        
                             
-                            
-                            
                         }
                            
                             
@@ -177,12 +165,7 @@ class RouterViewController: UINavigationController {
         
 
 }
-extension Notification.Name {
-    
-    public static let myNotificationKey = Notification.Name(rawValue: "myNotificationKey")
-    
-    
-}
+
 
 
 
